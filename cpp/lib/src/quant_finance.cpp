@@ -1,6 +1,6 @@
-#include "core_lib/core_lib.hpp"
+#include "quant_finance/quant_finance.hpp"
 
-namespace core_lib
+namespace quant_finance
 {
     double add(double a, double b)
     {
@@ -27,4 +27,4 @@ namespace core_lib
         }
         return a / b;
     }
-} // namespace core_lib
+} // namespace quant_finance

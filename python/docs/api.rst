@@ -1,15 +1,15 @@
 API Reference
 =============
 
-.. module:: core_lib
+.. module:: quant_finance
 
 Arithmetic functions
 --------------------
 
-.. autofunction:: core_lib.math.add
+.. autofunction:: quant_finance.math.add
 
-.. autofunction:: core_lib.math.subtract
+.. autofunction:: quant_finance.math.subtract
 
-.. autofunction:: core_lib.math.multiply
+.. autofunction:: quant_finance.math.multiply
 
-.. autofunction:: core_lib.math.divide
+.. autofunction:: quant_finance.math.divide

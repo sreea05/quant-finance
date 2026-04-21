@@ -1,4 +1,4 @@
-core_lib (C++)
+quant_finance (C++)
 ==============
 
 C++ core arithmetic library documented with Doxygen and exposed via Sphinx

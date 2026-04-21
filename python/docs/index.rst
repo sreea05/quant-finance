@@ -1,4 +1,4 @@
-core_lib
+quant_finance
 ========
 
 A C++ library exposed to Python via pybind11.

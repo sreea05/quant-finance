@@ -83,7 +83,7 @@ py-test-release: py-test-unit-release py-test-integration-release
 
 # Run Python tests with coverage (output: python/coverage/html/)
 py-test-coverage: cpp-build-release
-    cd {{py_dir}} && uv run pytest tests/unit/ tests/integration/ -v --cov=core_lib --cov-branch --cov-report=term-missing --cov-report=html:coverage/html --cov-fail-under=100
+    cd {{py_dir}} && uv run pytest tests/unit/ tests/integration/ -v --cov=quant_finance --cov-branch --cov-report=term-missing --cov-report=html:coverage/html --cov-fail-under=100
 
 # ── Python package ───────────────────────────────────────────────────────────
 

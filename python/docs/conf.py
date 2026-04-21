@@ -10,7 +10,7 @@ import sys
 sys.path.insert(0, os.path.abspath("../src"))
 
 # -- Project information -----------------------------------------------------
-project = "core_lib"
+project = "quant_finance"
 author = "sreea05"
 
 # -- General configuration ---------------------------------------------------
@@ -27,7 +27,7 @@ napoleon_numpy_docstring = False
 
 # Autodoc settings
 autodoc_member_order = "bysource"
-autodoc_mock_imports = ["core_lib._core"]
+autodoc_mock_imports = ["quant_finance._core"]
 
 # -- Options for HTML output -------------------------------------------------
 html_theme = "alabaster"

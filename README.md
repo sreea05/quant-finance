@@ -4,7 +4,7 @@
 
 A **template** C++ library exposed to Python via [pybind11](https://github.com/pybind/pybind11), built with [scikit-build-core](https://scikit-build-core.readthedocs.io) as the Python build backend and [vcpkg](https://vcpkg.io) for C++ package management.
 
-> **This is a template repository.** The default library is called `core_lib` with a `_core` pybind11 binding module. See [Customizing this template](#customizing-this-template) below for instructions on renaming it to your own project.
+> **This is a template repository.** The default library is called `quant_finance` with a `_core` pybind11 binding module. See [Customizing this template](#customizing-this-template) below for instructions on renaming it to your own project.
 
 ## Table of contents
 
@@ -58,19 +58,19 @@ A **template** C++ library exposed to Python via [pybind11](https://github.com/p
 │   │   └── api.rst
 │   ├── gcovr_templates/        # Custom gcovr HTML templates (decision coverage)
 │   ├── lib/
-│   │   ├── CMakeLists.txt      # core_lib static library
-│   │   ├── inc/core_lib/
-│   │   │   └── core_lib.hpp
+│   │   ├── CMakeLists.txt      # quant_finance static library
+│   │   ├── inc/quant_finance/
+│   │   │   └── quant_finance.hpp
 │   │   ├── src/
-│   │   │   └── core_lib.cpp
+│   │   │   └── quant_finance.cpp
 │   │   └── tests/
 │   │       ├── CMakeLists.txt
 │   │       ├── unit/
 │   │       │   ├── CMakeLists.txt
-│   │       │   └── test_core_lib.cpp
+│   │       │   └── test_quant_finance.cpp
 │   │       └── integration/
 │   │           ├── CMakeLists.txt
-│   │           └── test_core_lib_integration.cpp
+│   │           └── test_quant_finance_integration.cpp
 │   └── bindings/
 │       ├── CMakeLists.txt      # _core pybind11 module (finds Python + pybind11)
 │       └── bindings.cpp
@@ -84,14 +84,14 @@ A **template** C++ library exposed to Python via [pybind11](https://github.com/p
     │   ├── index.rst
     │   └── api.rst
     ├── src/
-    │   └── core_lib/
+    │   └── quant_finance/
     │       ├── __init__.py     # Re-exports from _core
     │       └── math.py
     └── tests/
         ├── unit/
-        │   └── test_core_lib.py        # Unit tests (individual functions)
+        │   └── test_quant_finance.py        # Unit tests (individual functions)
         └── integration/
-            └── test_core_lib.py        # Integration tests (module-level)
+            └── test_quant_finance.py        # Integration tests (module-level)
 ```
 
 ## Prerequisites
@@ -125,11 +125,11 @@ just cpp-test-release     # run C++ unit and integration tests
 just py-test-release      # run Python tests (imports the C++ extension)
 ```
 
-After `just cpp-build-release`, the compiled extension is copied into `python/src/core_lib/` so `import core_lib` works immediately.
+After `just cpp-build-release`, the compiled extension is copied into `python/src/quant_finance/` so `import quant_finance` works immediately.
 
 ## Building
 
-A single build command compiles the C++ `core_lib` static library **and** the `_core` pybind11 extension module. The extension is automatically copied into `python/src/core_lib/` after build.
+A single build command compiles the C++ `quant_finance` static library **and** the `_core` pybind11 extension module. The extension is automatically copied into `python/src/quant_finance/` after build.
 
 ```bash
 just cpp-build-release    # or just cpp-build-debug
@@ -137,10 +137,10 @@ just cpp-build-release    # or just cpp-build-debug
 
 **What happens**: CMake builds two targets from the `cpp/` tree:
 
-1. `core_lib` — static library (`cpp/lib/`)
-2. `_core` — pybind11 extension module (`cpp/bindings/`), linked against `core_lib`
+1. `quant_finance` — static library (`cpp/lib/`)
+2. `_core` — pybind11 extension module (`cpp/bindings/`), linked against `quant_finance`
 
-A custom `copy_core_binding` target copies the compiled `_core*.so` into `python/src/core_lib/` on every build, so Python can import it directly during development.
+A custom `copy_core_binding` target copies the compiled `_core*.so` into `python/src/quant_finance/` on every build, so Python can import it directly during development.
 
 ## Running tests
 
@@ -178,7 +178,7 @@ Builds with `--coverage` flags (debug CMake preset includes gcov instrumentation
 just py-test-coverage
 ```
 
-Runs pytest with branch coverage on the `core_lib` package. HTML report is written to `python/coverage/html/`. Fails if line or branch coverage is below 100%.
+Runs pytest with branch coverage on the `quant_finance` package. HTML report is written to `python/coverage/html/`. Fails if line or branch coverage is below 100%.
 
 ## Lint and format
 
@@ -204,7 +204,7 @@ just cpp-format-check    # check formatting (CI)
 just py-typecheck        # strict type-checking on src/ and tests/
 ```
 
-Mypy is configured in `python/mypy.ini` with `strict = True`. The `core_lib._core` C extension module is excluded from import checks since it is generated at build time.
+Mypy is configured in `python/mypy.ini` with `strict = True`. The `quant_finance._core` C extension module is excluded from import checks since it is generated at build time.
 
 ### Pre-commit hook
 
@@ -244,7 +244,7 @@ To produce a distributable `.whl` file, the package is built via [scikit-build-c
 just py-build-pkg
 ```
 
-The resulting wheel is written to `python/dist/` and can be installed anywhere with `pip install python/dist/core_lib-*.whl`.
+The resulting wheel is written to `python/dist/` and can be installed anywhere with `pip install python/dist/quant_finance-*.whl`.
 
 > **Note**: The `--wheel` flag (used internally by `py-build-pkg`) is required because the C++ source tree lives outside `python/` (at `../cpp`). Building a wheel directly from the source tree works because the relative path resolves correctly, whereas an sdist-based build would fail since the sdist doesn't include the `cpp/` directory.
 
@@ -266,7 +266,7 @@ A GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push to `ma
 ## Usage
 
 ```python
-from core_lib import add, subtract, multiply, divide
+from quant_finance import add, subtract, multiply, divide
 
 print(add(1.0, 2.0))       # 3.0
 print(subtract(5.0, 3.0))  # 2.0
@@ -317,24 +317,24 @@ Run `just` with no arguments to list all available recipes.
 
 ## Customizing this template
 
-To rename `core_lib` / `_core` to your own project name (e.g. `my_lib` / `_my_lib`), update the following files. Replace `core_lib` with your library name (use underscores for C++/Python identifiers) and `my_lib` with whatever name you choose.
+To rename `quant_finance` / `_core` to your own project name (e.g. `my_lib` / `_my_lib`), update the following files. Replace `quant_finance` with your library name (use underscores for C++/Python identifiers) and `my_lib` with whatever name you choose.
 
 ### C++ library
 
 | File | What to change |
 |------|----------------|
-| `cpp/CMakeLists.txt` | `project(core_lib CXX)` → `project(my_lib CXX)` |
-| `cpp/lib/CMakeLists.txt` | `add_library(core_lib ...)` and all `core_lib` target references |
-| `cpp/lib/inc/core_lib/core_lib.hpp` | Rename directory and file to `my_lib/my_lib.hpp`; update `namespace core_lib` → `namespace my_lib` |
-| `cpp/lib/src/core_lib.cpp` | Rename file to `my_lib.cpp`; update `#include` and `namespace` |
+| `cpp/CMakeLists.txt` | `project(quant_finance CXX)` → `project(my_lib CXX)` |
+| `cpp/lib/CMakeLists.txt` | `add_library(quant_finance ...)` and all `quant_finance` target references |
+| `cpp/lib/inc/quant_finance/quant_finance.hpp` | Rename directory and file to `my_lib/my_lib.hpp`; update `namespace quant_finance` → `namespace my_lib` |
+| `cpp/lib/src/quant_finance.cpp` | Rename file to `my_lib.cpp`; update `#include` and `namespace` |
 | `cpp/docs/Doxyfile` | Update `PROJECT_NAME` to `"my_lib"` |
 
 ### C++ bindings
 
 | File | What to change |
 |------|----------------|
-| `cpp/bindings/CMakeLists.txt` | `target_link_libraries(_core PRIVATE core_lib)` → `my_lib`; update `_py_pkg_dir` path and `install(TARGETS _core DESTINATION ...)` |
-| `cpp/bindings/bindings.cpp` | `#include "core_lib/core_lib.hpp"` → `"my_lib/my_lib.hpp"`; update `core_lib::` namespace references |
+| `cpp/bindings/CMakeLists.txt` | `target_link_libraries(_core PRIVATE quant_finance)` → `my_lib`; update `_py_pkg_dir` path and `install(TARGETS _core DESTINATION ...)` |
+| `cpp/bindings/bindings.cpp` | `#include "quant_finance/quant_finance.hpp"` → `"my_lib/my_lib.hpp"`; update `quant_finance::` namespace references |
 
 > **Tip**: If you also want to rename the pybind11 module from `_core` to e.g. `_my_lib`, update `PYBIND11_MODULE(_core, m)` in `bindings.cpp`, `pybind11_add_module(_core ...)` in `cpp/bindings/CMakeLists.txt`, and the import in `python/src/<pkg>/__init__.py`.
 
@@ -342,19 +342,19 @@ To rename `core_lib` / `_core` to your own project name (e.g. `my_lib` / `_my_li
 
 | File | What to change |
 |------|----------------|
-| `cpp/lib/tests/unit/CMakeLists.txt` | Executable name `unit_tests` and `core_lib` link target |
-| `cpp/lib/tests/unit/test_core_lib.cpp` | Rename file; update `#include`, `namespace`, and test fixture names |
-| `cpp/lib/tests/integration/CMakeLists.txt` | Executable name `integration_tests` and `core_lib` link target |
-| `cpp/lib/tests/integration/test_core_lib_integration.cpp` | Rename file; update `#include`, `namespace`, and test fixture names |
+| `cpp/lib/tests/unit/CMakeLists.txt` | Executable name `unit_tests` and `quant_finance` link target |
+| `cpp/lib/tests/unit/test_quant_finance.cpp` | Rename file; update `#include`, `namespace`, and test fixture names |
+| `cpp/lib/tests/integration/CMakeLists.txt` | Executable name `integration_tests` and `quant_finance` link target |
+| `cpp/lib/tests/integration/test_quant_finance_integration.cpp` | Rename file; update `#include`, `namespace`, and test fixture names |
 
 ### Python package
 
 | File | What to change |
 |------|----------------|
-| `python/pyproject.toml` | `name = "core_lib"` → `"my_lib"`; `wheel.packages = ["src/core_lib"]` → `["src/my_lib"]` |
-| `python/src/core_lib/` | Rename directory to `my_lib/` |
-| `python/src/core_lib/__init__.py` | Update `from core_lib._core import ...` → `from my_lib._core import ...` |
-| `python/tests/unit/test_core_lib.py` | Rename file; update `import core_lib` → `import my_lib` and all references |
-| `python/tests/integration/test_core_lib.py` | Rename file; update `import core_lib` → `import my_lib` and all references |
-| `python/docs/conf.py` | Update `project = "core_lib"` → `"my_lib"` |
+| `python/pyproject.toml` | `name = "quant_finance"` → `"my_lib"`; `wheel.packages = ["src/quant_finance"]` → `["src/my_lib"]` |
+| `python/src/quant_finance/` | Rename directory to `my_lib/` |
+| `python/src/quant_finance/__init__.py` | Update `from quant_finance._core import ...` → `from my_lib._core import ...` |
+| `python/tests/unit/test_quant_finance.py` | Rename file; update `import quant_finance` → `import my_lib` and all references |
+| `python/tests/integration/test_quant_finance.py` | Rename file; update `import quant_finance` → `import my_lib` and all references |
+| `python/docs/conf.py` | Update `project = "quant_finance"` → `"my_lib"` |
 | `python/docs/api.rst` | Update module name and documented members |
