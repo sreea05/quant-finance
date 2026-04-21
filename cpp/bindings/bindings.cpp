@@ -1,6 +1,6 @@
 #include <pybind11/pybind11.h>
 
-#include "core_lib/core_lib.hpp"
+#include "quant_finance/quant_finance.hpp"
 
 namespace py = pybind11;
 
@@ -8,8 +8,8 @@ PYBIND11_MODULE(_core, m)
 {
     m.doc() = "Test";
     py::module math = m.def_submodule("math", "math module");
-    math.def("add", &core_lib::add);
-    math.def("subtract", &core_lib::subtract);
-    math.def("multiply", &core_lib::multiply);
-    math.def("divide", &core_lib::divide);
+    math.def("add", &quant_finance::add);
+    math.def("subtract", &quant_finance::subtract);
+    math.def("multiply", &quant_finance::multiply);
+    math.def("divide", &quant_finance::divide);
 }

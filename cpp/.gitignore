@@ -69,7 +69,9 @@ Testing/
 .cache/
 
 # Doxygen generated docs
-docs/
+docs/html/
+docs/sphinx/
+docs/xml/
 
 # Coverage output
 coverage/

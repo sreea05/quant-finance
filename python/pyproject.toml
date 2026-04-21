@@ -1,5 +1,5 @@
 [project]
-name = "core_lib"
+name = "quant_finance"
 version = "0.1.0"
 description = "A C++ library exposed to Python via pybind11"
 readme = "../README.md"
@@ -35,7 +35,7 @@ cmake.build-type = "Release"
 cmake.source-dir = "../cpp"
 cmake.define.BUILD_TESTING = "OFF"
 build-dir = "build/release"
-wheel.packages = ["src/core_lib"]
+wheel.packages = ["src/quant_finance"]
 
 [build-system]
 requires = ["scikit-build-core>=0.12", "pybind11>=3"]

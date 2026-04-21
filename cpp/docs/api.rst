@@ -1,8 +1,8 @@
 API Reference
 =============
 
-core_lib namespace
+quant_finance namespace
 ------------------
 
-.. doxygennamespace:: core_lib
+.. doxygennamespace:: quant_finance
    :members:

@@ -1,8 +1,8 @@
-add_executable(unit_tests test_core_lib.cpp)
+add_executable(unit_tests test_quant_finance.cpp)
 
 target_link_libraries(unit_tests
     PRIVATE
-        core_lib
+        quant_finance
         GTest::gtest
         GTest::gtest_main
 )

@@ -8,7 +8,7 @@
  * Provides basic double-precision arithmetic operations intended as a
  * starting point for a C++ library exposed to Python via pybind11.
  */
-namespace core_lib
+namespace quant_finance
 {
 
     /**
@@ -44,4 +44,4 @@ namespace core_lib
      */
     double divide(double a, double b);
 
-} // namespace core_lib
+} // namespace quant_finance

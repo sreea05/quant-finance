@@ -1,4 +1,4 @@
-from core_lib._core import math as _math
+from quant_finance._core import math as _math
 
 
 def add(a: float, b: float) -> float:

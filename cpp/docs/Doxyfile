@@ -1,8 +1,8 @@
-# Doxyfile — configuration for core_lib C++ API docs
+# Doxyfile — configuration for quant_finance C++ API docs
 # Generate with:  cd cpp && doxygen docs/Doxyfile
 # Or via just:    just cpp-docs
 
-PROJECT_NAME           = "core_lib"
+PROJECT_NAME           = "quant_finance"
 PROJECT_BRIEF          = "C++ core arithmetic library"
 OUTPUT_DIRECTORY       = docs
 
