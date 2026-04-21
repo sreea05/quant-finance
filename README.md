@@ -1,14 +1,12 @@
-# cpp-python
+# quant-finance
 
-[![CI](https://github.com/sreea05/cpp-python/actions/workflows/ci.yml/badge.svg)](https://github.com/sreea05/cpp-python/actions/workflows/ci.yml)
+[![CI](https://github.com/sreea05/quant-finance/actions/workflows/ci.yml/badge.svg)](https://github.com/sreea05/quant-finance/actions/workflows/ci.yml)
 
-A **template** C++ library exposed to Python via [pybind11](https://github.com/pybind/pybind11), built with [scikit-build-core](https://scikit-build-core.readthedocs.io) as the Python build backend and [vcpkg](https://vcpkg.io) for C++ package management.
-
-> **This is a template repository.** The default library is called `quant_finance` with a `_core` pybind11 binding module. See [Customizing this template](#customizing-this-template) below for instructions on renaming it to your own project.
+A C++ quantitative finance library (`quant_finance`) exposed to Python via [pybind11](https://github.com/pybind/pybind11), built with [scikit-build-core](https://scikit-build-core.readthedocs.io) as the Python build backend and [vcpkg](https://vcpkg.io) for C++ package management.
 
 ## Table of contents
 
-- [cpp-python](#cpp-python)
+- [quant-finance](#quant-finance)
   - [Table of contents](#table-of-contents)
   - [Project structure](#project-structure)
   - [Prerequisites](#prerequisites)
@@ -32,16 +30,11 @@ A **template** C++ library exposed to Python via [pybind11](https://github.com/p
   - [CI/CD](#cicd)
   - [Usage](#usage)
   - [Recipe reference](#recipe-reference)
-  - [Customizing this template](#customizing-this-template)
-    - [C++ library](#c-library)
-    - [C++ bindings](#c-bindings)
-    - [C++ tests](#c-tests)
-    - [Python package](#python-package)
 
 ## Project structure
 
 ```
-<your-project>/
+quant-finance/
 ├── justfile                    # Task runner — `just <recipe>` for all commands
 ├── README.md
 ├── hooks/
@@ -109,8 +102,8 @@ A **template** C++ library exposed to Python via [pybind11](https://github.com/p
 ## Quick start
 
 ```bash
-git clone <your-repo-url>
-cd <your-project>
+git clone https://github.com/sreea05/quant-finance
+cd quant-finance
 ```
 
 > **Tip**: Set `VCPKG_ROOT` in your shell profile before running `just install`:
@@ -315,46 +308,4 @@ except ValueError as e:
 
 Run `just` with no arguments to list all available recipes.
 
-## Customizing this template
 
-To rename `quant_finance` / `_core` to your own project name (e.g. `my_lib` / `_my_lib`), update the following files. Replace `quant_finance` with your library name (use underscores for C++/Python identifiers) and `my_lib` with whatever name you choose.
-
-### C++ library
-
-| File | What to change |
-|------|----------------|
-| `cpp/CMakeLists.txt` | `project(quant_finance CXX)` → `project(my_lib CXX)` |
-| `cpp/lib/CMakeLists.txt` | `add_library(quant_finance ...)` and all `quant_finance` target references |
-| `cpp/lib/inc/quant_finance/quant_finance.hpp` | Rename directory and file to `my_lib/my_lib.hpp`; update `namespace quant_finance` → `namespace my_lib` |
-| `cpp/lib/src/quant_finance.cpp` | Rename file to `my_lib.cpp`; update `#include` and `namespace` |
-| `cpp/docs/Doxyfile` | Update `PROJECT_NAME` to `"my_lib"` |
-
-### C++ bindings
-
-| File | What to change |
-|------|----------------|
-| `cpp/bindings/CMakeLists.txt` | `target_link_libraries(_core PRIVATE quant_finance)` → `my_lib`; update `_py_pkg_dir` path and `install(TARGETS _core DESTINATION ...)` |
-| `cpp/bindings/bindings.cpp` | `#include "quant_finance/quant_finance.hpp"` → `"my_lib/my_lib.hpp"`; update `quant_finance::` namespace references |
-
-> **Tip**: If you also want to rename the pybind11 module from `_core` to e.g. `_my_lib`, update `PYBIND11_MODULE(_core, m)` in `bindings.cpp`, `pybind11_add_module(_core ...)` in `cpp/bindings/CMakeLists.txt`, and the import in `python/src/<pkg>/__init__.py`.
-
-### C++ tests
-
-| File | What to change |
-|------|----------------|
-| `cpp/lib/tests/unit/CMakeLists.txt` | Executable name `unit_tests` and `quant_finance` link target |
-| `cpp/lib/tests/unit/test_quant_finance.cpp` | Rename file; update `#include`, `namespace`, and test fixture names |
-| `cpp/lib/tests/integration/CMakeLists.txt` | Executable name `integration_tests` and `quant_finance` link target |
-| `cpp/lib/tests/integration/test_quant_finance_integration.cpp` | Rename file; update `#include`, `namespace`, and test fixture names |
-
-### Python package
-
-| File | What to change |
-|------|----------------|
-| `python/pyproject.toml` | `name = "quant_finance"` → `"my_lib"`; `wheel.packages = ["src/quant_finance"]` → `["src/my_lib"]` |
-| `python/src/quant_finance/` | Rename directory to `my_lib/` |
-| `python/src/quant_finance/__init__.py` | Update `from quant_finance._core import ...` → `from my_lib._core import ...` |
-| `python/tests/unit/test_quant_finance.py` | Rename file; update `import quant_finance` → `import my_lib` and all references |
-| `python/tests/integration/test_quant_finance.py` | Rename file; update `import quant_finance` → `import my_lib` and all references |
-| `python/docs/conf.py` | Update `project = "quant_finance"` → `"my_lib"` |
-| `python/docs/api.rst` | Update module name and documented members |
