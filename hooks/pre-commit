@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Running pre-commit checks..."
+
+echo "Checking Python formatting..."
+just py-format-check
+
+echo "Checking Python linting..."
+just py-lint-check
+
+echo "Checking C++ formatting..."
+just cpp-format-check
+
+echo "All pre-commit checks passed."

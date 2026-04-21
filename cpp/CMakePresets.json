@@ -1,0 +1,48 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "cacheVariables": {
+                "VCPKG_MANIFEST_INSTALL": "OFF",
+                "VCPKG_INSTALLED_DIR": "${sourceDir}/vcpkg_installed",
+                "CMAKE_MAKE_PROGRAM": "${sourceDir}/../python/.venv/bin/ninja",
+                "Python_EXECUTABLE": "${sourceDir}/../python/.venv/bin/python3"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release",
+            "description": "Release build",
+            "inherits": "base",
+            "binaryDir": "${sourceDir}/build/release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "description": "Debug build with gcov coverage instrumentation",
+            "inherits": "base",
+            "binaryDir": "${sourceDir}/build/debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_CXX_FLAGS": "--coverage",
+                "CMAKE_EXE_LINKER_FLAGS": "--coverage"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "release",
+            "configurePreset": "release"
+        },
+        {
+            "name": "debug",
+            "configurePreset": "debug"
+        }
+    ]
+}

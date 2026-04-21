@@ -1,0 +1,37 @@
+# Doxyfile — configuration for core_lib C++ API docs
+# Generate with:  cd cpp && doxygen docs/Doxyfile
+# Or via just:    just cpp-docs
+
+PROJECT_NAME           = "core_lib"
+PROJECT_BRIEF          = "C++ core arithmetic library"
+OUTPUT_DIRECTORY       = docs
+
+# ── Input ────────────────────────────────────────────────────────────────────
+INPUT                  = lib/inc lib/src
+FILE_PATTERNS          = *.hpp *.cpp
+RECURSIVE              = YES
+
+# ── Build options ────────────────────────────────────────────────────────────
+EXTRACT_ALL            = YES
+EXTRACT_STATIC         = YES
+GENERATE_TODOLIST      = YES
+SORT_MEMBER_DOCS       = YES
+JAVADOC_AUTOBRIEF      = YES
+
+# ── Output formats ───────────────────────────────────────────────────────────
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+GENERATE_XML           = YES
+XML_OUTPUT             = xml
+
+# ── Source browser ───────────────────────────────────────────────────────────
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+
+# ── Warnings ─────────────────────────────────────────────────────────────────
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = YES
+
+# ── Excludes ─────────────────────────────────────────────────────────────────
+EXCLUDE_PATTERNS       = */build/* */vcpkg_installed/* */tests/*

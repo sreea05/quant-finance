@@ -1,0 +1,32 @@
+{
+    "[cpp]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "C_Cpp.clang_format_path": "${workspaceFolder}/python/.venv/bin/clang-format",
+    "C_Cpp.clang_format_style": "file:${workspaceFolder}/cpp/.clang-format",
+    "cmake.sourceDirectory": "${workspaceFolder}/cpp",
+    "cmake.cmakePath": "${workspaceFolder}/python/.venv/bin/cmake",
+    "cmake.useCMakePresets": "always",
+    "cmake.ctest.testExplorerIntegrationEnabled": false,
+    "testMate.cpp.test.advancedExecutables": [
+        {
+            "pattern": "cpp/build/{debug,release}/**/*_tests",
+            "name": "[${relDirpath[2:3]}] ${filename}"
+        }
+    ],
+    "python.defaultInterpreterPath": "${workspaceFolder}/python/.venv/bin/python",
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.cwd": "${workspaceFolder}/python",
+    "python.testing.pytestArgs": [],
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit"
+        }
+    },
+    "ruff.path": ["${workspaceFolder}/python/.venv/bin/ruff"],
+    "ruff.configuration": "${workspaceFolder}/python/ruff.toml"
+}

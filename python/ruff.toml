@@ -1,0 +1,33 @@
+line-length = 100
+target-version = "py312"
+
+[lint]
+select = [
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "W",   # warnings
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # bugbear
+    "C4",  # comprehensions
+    "SIM", # simplify
+    "RUF", # Ruff-specific
+    "ANN", # type annotations
+    "ARG", # unused arguments
+    "DTZ", # timezone safety
+    "ERA", # commented-out code
+]
+
+ignore = [
+    "E501",  # handled by formatter
+]
+
+dummy-variable-rgx = "^_.*"
+
+[lint.isort]
+combine-as-imports = true
+
+[format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"

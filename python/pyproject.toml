@@ -1,0 +1,42 @@
+[project]
+name = "core_lib"
+version = "0.1.0"
+description = "A C++ library exposed to Python via pybind11"
+readme = "../README.md"
+license = "MIT"
+authors = [
+    { name = "sreea05", email = "258596614+sreea05@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "breathe==4.36.0",
+    "clang-format==22.1.1",
+    "cmake==4.2.3",
+    "gcovr==8.6",
+    "mypy==1.19.1",
+    "ninja==1.13.0",
+    "pybind11==3.0.2",
+    "pytest==9.0.2",
+    "pytest-cov==6.2.1",
+    "ruff==0.15.7",
+    "sphinx==9.1.0",
+    "sphinx-autodoc-typehints==3.9.11",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.scikit-build]
+cmake.build-type = "Release"
+cmake.source-dir = "../cpp"
+cmake.define.BUILD_TESTING = "OFF"
+build-dir = "build/release"
+wheel.packages = ["src/core_lib"]
+
+[build-system]
+requires = ["scikit-build-core>=0.12", "pybind11>=3"]
+build-backend = "scikit_build_core.build"
