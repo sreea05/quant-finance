@@ -1,5 +1,8 @@
 add_library(quant_finance STATIC src/quant_finance.cpp)
 
+find_package(Eigen3 CONFIG REQUIRED)
+target_link_libraries(quant_finance PRIVATE Eigen3::Eigen)
+
 target_include_directories(quant_finance PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
     $<INSTALL_INTERFACE:inc>
