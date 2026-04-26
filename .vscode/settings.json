@@ -9,6 +9,24 @@
     "cmake.cmakePath": "${workspaceFolder}/python/.venv/bin/cmake",
     "cmake.useCMakePresets": "always",
     "cmake.ctest.testExplorerIntegrationEnabled": false,
+    "testMate.cpp.debug.configTemplate": {
+        "type": "cppdbg",
+        "program": "${exec}",
+        "cwd": "${absDirpath}",
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            },
+            {
+                "description": "Load Eigen pretty printers",
+                "text": "source ${workspaceFolder}/cpp/gdb/eigen_printers.py",
+                "ignoreFailures": true
+            }
+        ]
+    },
     "testMate.cpp.test.advancedExecutables": [
         {
             "pattern": "cpp/build/{debug,release}/**/*_tests",
