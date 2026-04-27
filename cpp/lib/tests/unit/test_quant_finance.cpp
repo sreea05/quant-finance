@@ -4,6 +4,11 @@
 
 #include "quant_finance/quant_finance.hpp"
 
+TEST(CoreLibTest, ScaleMatrix)
+{
+    quant_finance::scale_matrix(5);
+}
+
 TEST(CoreLibTest, Add)
 {
     EXPECT_DOUBLE_EQ(quant_finance::add(1.0, 2.0), 3.0);
