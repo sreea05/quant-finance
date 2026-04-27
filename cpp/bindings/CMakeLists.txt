@@ -14,6 +14,9 @@ find_package(pybind11 CONFIG REQUIRED)
 pybind11_add_module(_core bindings.cpp)
 target_link_libraries(_core PRIVATE quant_finance)
 
+find_package(Eigen3 CONFIG REQUIRED)
+target_link_libraries(_core PRIVATE Eigen3::Eigen)
+
 # Copy extension to Python package for development (skipped during wheel builds).
 # A custom target marked ALL runs on every build even when _core is up-to-date,
 # so switching between Debug and Release always updates the extension.
