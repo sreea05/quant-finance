@@ -53,9 +53,9 @@ cpp-test-release: cpp-test-unit-release cpp-test-integration-release
 # Run C++ tests with coverage report (output: cpp/coverage/html/)
 cpp-test-coverage: cpp-test-unit-debug cpp-test-integration-debug
     mkdir -p {{cpp_dir}}/coverage/html
-    cd {{cpp_dir}} && "{{venv_bin}}/gcovr" --root . --filter 'lib/src/' --filter 'lib/inc/' \
+    cd {{cpp_dir}} && "{{venv_bin}}/gcovr" --config gcovr/gcovr.cfg --root . --filter 'lib/src/' --filter 'lib/inc/' \
         --exclude-unreachable-branches --exclude-throw-branches --decisions \
-        --html-template-dir gcovr_templates \
+        --html-template-dir gcovr/templates \
         --print-summary --html-details coverage/html/index.html --txt \
         --fail-under-line 100 --fail-under-branch 100 --fail-under-decision 100
 
