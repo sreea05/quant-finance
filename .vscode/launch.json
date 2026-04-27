@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to pybind11 extension",
+      "type": "cppdbg",
+      "request": "attach",
+      "program": "${workspaceFolder}/python/.venv/bin/python",
+      "processId": "${command:pickProcess}",
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Allow breakpoints in not-yet-loaded shared libraries",
+          "text": "set breakpoint pending on",
+          "ignoreFailures": false
+        },
+        {
+            "description": "Load Eigen pretty printers",
+            "text": "source ${workspaceFolder}/cpp/gdb/eigen_printers.py",
+            "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
