@@ -2,6 +2,8 @@
 
 #include <stdexcept>
 
+#include <Eigen/Dense>
+
 /**
  * @brief Core arithmetic library.
  *
@@ -10,6 +12,7 @@
  */
 namespace quant_finance
 {
+    Eigen::MatrixXd scale_matrix(double scale);
 
     /**
      * @brief Return the sum of @p a and @p b.
