@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "quant_finance/quant_finance.hpp"
 
 namespace quant_finance
@@ -12,8 +10,6 @@ namespace quant_finance
                 4, 5, 6,
                 7, 8, 9;
         // clang-format on
-
-        std::cout << mat.data() << std::endl;
 
         mat *= scale;
         return mat;
