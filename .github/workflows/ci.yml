@@ -20,7 +20,7 @@ jobs:
         uses: astral-sh/setup-uv@v7
 
       - name: Install just
-        uses: extractions/setup-just@v2
+        uses: extractions/setup-just@v4
 
       - name: Set VCPKG_ROOT
         run: echo "VCPKG_ROOT=$VCPKG_INSTALLATION_ROOT" >> "$GITHUB_ENV"
