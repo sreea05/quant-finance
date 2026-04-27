@@ -21,6 +21,8 @@ jobs:
 
       - name: Install just
         uses: extractions/setup-just@v4
+        with:
+          just-version: "1.50.0"
 
       - name: Set VCPKG_ROOT
         run: echo "VCPKG_ROOT=$VCPKG_INSTALLATION_ROOT" >> "$GITHUB_ENV"
