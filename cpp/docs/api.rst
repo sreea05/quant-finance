@@ -1,8 +1,8 @@
 API Reference
 =============
 
-quant_finance namespace
+qf namespace
 ------------------
 
-.. doxygennamespace:: quant_finance
+.. doxygennamespace:: qf
    :members:

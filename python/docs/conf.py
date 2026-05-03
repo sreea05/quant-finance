@@ -10,7 +10,7 @@ import sys
 sys.path.insert(0, os.path.abspath("../src"))
 
 # -- Project information -----------------------------------------------------
-project = "quant_finance"
+project = "Quant Finance (Python)"
 author = "sreea05"
 
 # -- General configuration ---------------------------------------------------

@@ -3,7 +3,7 @@
 # Breathe bridges Doxygen XML output into Sphinx so that C++ docs
 # are rendered with the same tooling as the Python docs.
 
-project = "quant_finance (C++)"
+project = "Quant Finance (C++)"
 author = "sreea05"
 
 extensions = [

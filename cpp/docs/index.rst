@@ -1,5 +1,5 @@
-quant_finance (C++)
-==============
+Quant Finance (C++)
+===================
 
 C++ core arithmetic library documented with Doxygen and exposed via Sphinx
 using the `Breathe <https://breathe.readthedocs.io/>`_ extension.
