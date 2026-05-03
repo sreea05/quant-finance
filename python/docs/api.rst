@@ -6,4 +6,4 @@ API Reference
 Functions
 ---------
 
-.. autofunction:: quant_finance.math.scale_matrix
+.. autofunction:: quant_finance.example.scale_matrix
