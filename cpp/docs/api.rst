@@ -1,8 +1,14 @@
 API Reference
 =============
 
-qf namespace
-------------------
+``qf::math`` namespace
+-----------------------
 
-.. doxygennamespace:: qf
+.. doxygennamespace:: qf::math
+   :members:
+
+``example`` namespace
+----------------------
+
+.. doxygennamespace:: example
    :members:
