@@ -1,4 +1,4 @@
-add_executable(unit_tests test_quant_finance.cpp)
+add_executable(unit_tests test_example.cpp)
 
 target_link_libraries(unit_tests
     PRIVATE

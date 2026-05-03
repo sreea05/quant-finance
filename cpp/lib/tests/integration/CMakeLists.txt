@@ -1,4 +1,4 @@
-add_executable(integration_tests test_quant_finance_integration.cpp)
+add_executable(integration_tests test_example.cpp)
 
 target_link_libraries(integration_tests
     PRIVATE

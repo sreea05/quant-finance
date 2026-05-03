@@ -7,9 +7,12 @@
 
 namespace qf
 {
-    /// @brief A dynamic-size column vector of double-precision floating-point values.
-    using vector = Eigen::VectorXd;
+    namespace math
+    {
+        /// @brief A dynamic-size column vector of double-precision floating-point values.
+        using vector = Eigen::VectorXd;
 
-    /// @brief A dynamic-size matrix of double-precision floating-point values.
-    using matrix = Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic>;
+        /// @brief A dynamic-size matrix of double-precision floating-point values.
+        using matrix = Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic>;
+    } // namespace math
 } // namespace qf

@@ -10,7 +10,7 @@
  * Provides basic double-precision arithmetic operations intended as a
  * starting point for a C++ library exposed to Python via pybind11.
  */
-namespace qf
+namespace example
 {
     /**
      * @brief Scales every element of a matrix by a scalar factor.
@@ -20,5 +20,5 @@ namespace qf
      * @param scale The scalar value by which each element of @p mat is multiplied.
      * @return      A new matrix whose elements equal those of @p mat multiplied by @p scale.
      */
-    qf::matrix scale_matrix(Eigen::Ref<const qf::matrix> mat, double scale);
-} // namespace qf
+    qf::math::matrix scale_matrix(Eigen::Ref<const qf::math::matrix> mat, double scale);
+} // namespace example
