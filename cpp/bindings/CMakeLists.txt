@@ -11,7 +11,16 @@ execute_process(
 )
 find_package(pybind11 CONFIG REQUIRED)
 
-pybind11_add_module(_core main.cpp)
+pybind11_add_module(
+    _core
+    main.cpp
+    src/root.cpp
+    src/example.cpp
+)
+target_include_directories(_core PRIVATE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
+)
+
 target_link_libraries(_core PRIVATE quant_finance)
 
 find_package(Eigen3 CONFIG REQUIRED)
