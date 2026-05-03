@@ -1,4 +1,4 @@
-add_library(quant_finance STATIC src/quant_finance.cpp)
+add_library(quant_finance STATIC src/example.cpp)
 
 find_package(Eigen3 CONFIG REQUIRED)
 target_link_libraries(quant_finance PUBLIC Eigen3::Eigen)
