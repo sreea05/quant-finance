@@ -6,7 +6,7 @@ Thin Python wrappers around the compiled C++ extension module
 
 import numpy as np
 
-from quant_finance._core import math as _math
+from quant_finance._core import example as _example
 
 
 def scale_matrix(mat: np.ndarray, scale: float) -> np.ndarray:
@@ -17,5 +17,5 @@ def scale_matrix(mat: np.ndarray, scale: float) -> np.ndarray:
     :return: A new array whose elements equal those of *mat* multiplied by *scale*.
     :rtype: np.ndarray
     """
-    result: np.ndarray = _math.scale_matrix(mat, scale)
+    result: np.ndarray = _example.scale_matrix(mat, scale)
     return result
