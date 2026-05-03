@@ -11,7 +11,7 @@ execute_process(
 )
 find_package(pybind11 CONFIG REQUIRED)
 
-pybind11_add_module(_core bindings.cpp)
+pybind11_add_module(_core main.cpp)
 target_link_libraries(_core PRIVATE quant_finance)
 
 find_package(Eigen3 CONFIG REQUIRED)
