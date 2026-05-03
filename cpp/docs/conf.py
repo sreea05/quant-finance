@@ -11,7 +11,7 @@ extensions = [
 ]
 
 # -- Breathe configuration ---------------------------------------------------
-breathe_projects = {"quant_finance": "../docs/xml"}
+breathe_projects = {"quant_finance": "xml"}
 breathe_default_project = "quant_finance"
 
 # -- Options for HTML output -------------------------------------------------
