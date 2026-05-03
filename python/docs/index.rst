@@ -1,5 +1,5 @@
-quant_finance
-========
+Quant Finance (Python)
+======================
 
 A C++ library exposed to Python via pybind11.
 

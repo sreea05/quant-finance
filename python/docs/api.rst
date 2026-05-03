@@ -3,13 +3,7 @@ API Reference
 
 .. module:: quant_finance
 
-Arithmetic functions
---------------------
+Functions
+---------
 
-.. autofunction:: quant_finance.math.add
-
-.. autofunction:: quant_finance.math.subtract
-
-.. autofunction:: quant_finance.math.multiply
-
-.. autofunction:: quant_finance.math.divide
+.. autofunction:: quant_finance.math.scale_matrix
