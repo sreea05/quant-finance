@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdexcept>
-
 #include <Eigen/Dense>
+
+#include "quant_finance/math/types.hpp"
 
 /**
  * @brief Core arithmetic library.
@@ -10,41 +10,15 @@
  * Provides basic double-precision arithmetic operations intended as a
  * starting point for a C++ library exposed to Python via pybind11.
  */
-namespace quant_finance
+namespace qf
 {
-    Eigen::MatrixXd scale_matrix(double scale);
-
     /**
-     * @brief Return the sum of @p a and @p b.
-     * @param a First operand.
-     * @param b Second operand.
-     * @return a + b
+     * @brief Scales every element of a matrix by a scalar factor.
+     *
+     * @param mat   The input matrix to scale. Passed as a read-only Eigen reference
+     *              to avoid unnecessary copies.
+     * @param scale The scalar value by which each element of @p mat is multiplied.
+     * @return      A new matrix whose elements equal those of @p mat multiplied by @p scale.
      */
-    double add(double a, double b);
-
-    /**
-     * @brief Return the difference of @p a and @p b.
-     * @param a First operand.
-     * @param b Second operand.
-     * @return a - b
-     */
-    double subtract(double a, double b);
-
-    /**
-     * @brief Return the product of @p a and @p b.
-     * @param a First operand.
-     * @param b Second operand.
-     * @return a * b
-     */
-    double multiply(double a, double b);
-
-    /**
-     * @brief Return the quotient of @p a divided by @p b.
-     * @param a Dividend.
-     * @param b Divisor. Must not be exactly zero.
-     * @return a / b
-     * @throws std::invalid_argument if @p b is zero.
-     */
-    double divide(double a, double b);
-
-} // namespace quant_finance
+    qf::matrix scale_matrix(Eigen::Ref<const qf::matrix> mat, double scale);
+} // namespace qf

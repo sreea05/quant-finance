@@ -1,44 +1,47 @@
-#include <stdexcept>
-
 #include <gtest/gtest.h>
 
 #include "quant_finance/quant_finance.hpp"
 
-TEST(CoreLibTest, ScaleMatrix)
+TEST(core_lib_test, scale_matrix)
 {
-    quant_finance::scale_matrix(5);
+    qf::matrix mat(3, 3);
+    // clang-format off
+        mat <<  1, 2, 3,
+                4, 5, 6,
+                7, 8, 9;
+    // clang-format on
+
+    qf::matrix expected(3, 3);
+    // clang-format off
+        expected << 5,  10, 15,
+                    20, 25, 30,
+                    35, 40, 45;
+    // clang-format on
+
+    qf::matrix result = qf::scale_matrix(mat, 5);
+    EXPECT_TRUE(result.isApprox(expected));
 }
 
-TEST(CoreLibTest, Add)
+TEST(core_lib_test, scale_matrix_by_zero)
 {
-    EXPECT_DOUBLE_EQ(quant_finance::add(1.0, 2.0), 3.0);
-    EXPECT_DOUBLE_EQ(quant_finance::add(-1.0, 1.0), 0.0);
-    EXPECT_DOUBLE_EQ(quant_finance::add(0.0, 0.0), 0.0);
+    qf::matrix mat(2, 2);
+    // clang-format off
+    mat << 1, 2,
+           3, 4;
+    // clang-format on
+
+    qf::matrix result = qf::scale_matrix(mat, 0);
+    EXPECT_TRUE(result.isZero());
 }
 
-TEST(CoreLibTest, Subtract)
+TEST(core_lib_test, scale_matrix_by_one)
 {
-    EXPECT_DOUBLE_EQ(quant_finance::subtract(5.0, 3.0), 2.0);
-    EXPECT_DOUBLE_EQ(quant_finance::subtract(0.0, 5.0), -5.0);
-    EXPECT_DOUBLE_EQ(quant_finance::subtract(3.0, 3.0), 0.0);
-}
+    qf::matrix mat(2, 2);
+    // clang-format off
+    mat << 1.5, 2.5,
+           3.5, 4.5;
+    // clang-format on
 
-TEST(CoreLibTest, Multiply)
-{
-    EXPECT_DOUBLE_EQ(quant_finance::multiply(3.0, 4.0), 12.0);
-    EXPECT_DOUBLE_EQ(quant_finance::multiply(-2.0, 3.0), -6.0);
-    EXPECT_DOUBLE_EQ(quant_finance::multiply(0.0, 100.0), 0.0);
-}
-
-TEST(CoreLibTest, Divide)
-{
-    EXPECT_DOUBLE_EQ(quant_finance::divide(10.0, 2.0), 5.0);
-    EXPECT_DOUBLE_EQ(quant_finance::divide(7.0, 2.0), 3.5);
-    EXPECT_DOUBLE_EQ(quant_finance::divide(-6.0, 3.0), -2.0);
-}
-
-TEST(CoreLibTest, DivideByZero)
-{
-    EXPECT_THROW(quant_finance::divide(1.0, 0.0), std::invalid_argument);
-    EXPECT_THROW(quant_finance::divide(-5.0, 0.0), std::invalid_argument);
+    qf::matrix result = qf::scale_matrix(mat, 1);
+    EXPECT_TRUE(result.isApprox(mat));
 }
