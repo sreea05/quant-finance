@@ -17,4 +17,5 @@ def scale_matrix(mat: np.ndarray, scale: float) -> np.ndarray:
     :return: A new array whose elements equal those of *mat* multiplied by *scale*.
     :rtype: np.ndarray
     """
-    return _math.scale_matrix(mat, scale)
+    result: np.ndarray = _math.scale_matrix(mat, scale)
+    return result
