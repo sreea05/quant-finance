@@ -1,36 +1,45 @@
-#include <stdexcept>
-
 #include <gtest/gtest.h>
 
 #include "quant_finance/quant_finance.hpp"
 
-TEST(CoreLibIntegration, ChainedArithmetic)
+TEST(scale_matrix_integration_test, chain_scale_operations)
 {
-    // (10 + 5) * 3 / 5 - 2 = 7.0
-    double result = quant_finance::add(10.0, 5.0);
-    result = quant_finance::multiply(result, 3.0);
-    result = quant_finance::divide(result, 5.0);
-    result = quant_finance::subtract(result, 2.0);
-    EXPECT_DOUBLE_EQ(result, 7.0);
+    qf::matrix mat(2, 2);
+    // clang-format off
+    mat << 1, 2,
+           3, 4;
+    // clang-format on
+
+    // Scale by 2 then by 3 should equal a single scale by 6
+    qf::matrix scaled_twice = qf::scale_matrix(qf::scale_matrix(mat, 2), 3);
+    qf::matrix scaled_once = qf::scale_matrix(mat, 6);
+
+    EXPECT_TRUE(scaled_twice.isApprox(scaled_once));
 }
 
-TEST(CoreLibIntegration, DivideByZeroInChain)
+TEST(scale_matrix_integration_test, scale_by_zero_produces_zero_matrix)
 {
-    double result = quant_finance::subtract(5.0, 5.0); // produces 0.0
-    EXPECT_THROW(quant_finance::divide(10.0, result), std::invalid_argument);
+    qf::matrix mat(3, 3);
+    // clang-format off
+    mat << 1, 2, 3,
+           4, 5, 6,
+           7, 8, 9;
+    // clang-format on
+
+    qf::matrix result = qf::scale_matrix(mat, 0);
+
+    EXPECT_TRUE(result.isZero());
 }
 
-TEST(CoreLibIntegration, NegativeChain)
+TEST(scale_matrix_integration_test, scale_by_one_preserves_matrix)
 {
-    // -3 * 4 + 12 = 0.0
-    double result = quant_finance::multiply(-3.0, 4.0);
-    result = quant_finance::add(result, 12.0);
-    EXPECT_DOUBLE_EQ(result, 0.0);
-}
+    qf::matrix mat(2, 3);
+    // clang-format off
+    mat << 1.5, 2.5, 3.5,
+           4.5, 5.5, 6.5;
+    // clang-format on
 
-TEST(CoreLibIntegration, LargeValueChain)
-{
-    double result = quant_finance::multiply(1e8, 1e8);
-    result = quant_finance::divide(result, 1e8);
-    EXPECT_DOUBLE_EQ(result, 1e8);
+    qf::matrix result = qf::scale_matrix(mat, 1);
+
+    EXPECT_TRUE(result.isApprox(mat));
 }

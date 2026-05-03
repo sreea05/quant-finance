@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include <pybind11/eigen.h>
 #include <pybind11/pybind11.h>
 
@@ -9,9 +11,5 @@ PYBIND11_MODULE(_core, m)
 {
     m.doc() = "Test";
     py::module math = m.def_submodule("math", "math module");
-    math.def("scale_matrix", &quant_finance::scale_matrix);
-    math.def("add", &quant_finance::add);
-    math.def("subtract", &quant_finance::subtract);
-    math.def("multiply", &quant_finance::multiply);
-    math.def("divide", &quant_finance::divide);
+    math.def("scale_matrix", &qf::scale_matrix, py::return_value_policy::reference_internal);
 }
