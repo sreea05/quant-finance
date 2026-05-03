@@ -12,6 +12,7 @@
     "testMate.cpp.debug.configTemplate": {
         "type": "cppdbg",
         "program": "${exec}",
+        "args": "${argsArray}",
         "cwd": "${absDirpath}",
         "MIMode": "gdb",
         "setupCommands": [
