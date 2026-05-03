@@ -130,11 +130,11 @@ cpp-format-check:
 # Generate C++ API documentation (Doxygen + Sphinx/Breathe)
 cpp-docs:
     cd {{cpp_dir}} && doxygen docs/Doxyfile
-    cd {{cpp_dir}} && "{{venv_bin}}/sphinx-build" -b html docs docs/sphinx
+    cd {{cpp_dir}} && "{{venv_bin}}/sphinx-build" -b html docs docs/build
 
 # Generate Python documentation (Sphinx)
 py-docs:
-    cd {{py_dir}} && uv run sphinx-build -b html docs docs/_build
+    cd {{py_dir}} && uv run sphinx-build -b html docs docs/build
 
 # ── Clean ─────────────────────────────────────────────────────────────────────
 
