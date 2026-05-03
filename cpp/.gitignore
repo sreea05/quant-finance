@@ -70,7 +70,7 @@ Testing/
 
 # Doxygen generated docs
 docs/html/
-docs/sphinx/
+docs/build/
 docs/xml/
 
 # Coverage output
