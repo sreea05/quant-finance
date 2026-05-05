@@ -1,4 +1,7 @@
-add_library(quant_finance STATIC src/example.cpp)
+add_library(quant_finance STATIC
+    src/example.cpp
+    src/logger.cpp
+)
 
 find_package(Eigen3 CONFIG REQUIRED)
 target_link_libraries(quant_finance PUBLIC Eigen3::Eigen)
@@ -9,6 +12,9 @@ endif()
 
 find_package(Boost REQUIRED COMPONENTS math)
 target_link_libraries(quant_finance PRIVATE Boost::math)
+
+find_package(spdlog CONFIG REQUIRED)
+target_link_libraries(quant_finance PRIVATE spdlog::spdlog)
 
 target_include_directories(quant_finance PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>

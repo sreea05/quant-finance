@@ -1,4 +1,7 @@
-add_executable(unit_tests test_example.cpp)
+add_executable(unit_tests
+    test_example.cpp
+    test_logger.cpp
+)
 
 target_link_libraries(unit_tests
     PRIVATE
