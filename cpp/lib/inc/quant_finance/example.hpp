@@ -14,6 +14,7 @@ namespace example
 {
     /**
      * @brief Scales every element of a matrix by a scalar factor.
+     * @ingroup qf_functions
      *
      * @param mat   The input @ref qf::math::matrix to scale. Passed as a read-only Eigen
      *              reference to avoid unnecessary copies.
