@@ -1,9 +1,18 @@
 # Doxyfile — configuration for quant_finance C++ API docs
-# Generate with:  cd cpp && doxygen docs/Doxyfile
-# Or via just:    just cpp-docs
+#
+# Generate with:  just cpp-docs
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# ADDING DOCUMENTATION
+# ─────────────────────────────────────────────────────────────────────────────
+# Just annotate your C++ header with Doxygen comments — the build picks them
+# up automatically.  No RST or other generated files need to be edited.
+# See docs/WRITING_DOCS.md for a quick-start guide and examples.
+# ─────────────────────────────────────────────────────────────────────────────
 
 PROJECT_NAME           = "quant_finance"
 PROJECT_BRIEF          = "C++ core arithmetic library"
+PROJECT_NUMBER         =
 OUTPUT_DIRECTORY       = docs
 
 # ── Input ────────────────────────────────────────────────────────────────────
@@ -17,16 +26,46 @@ EXTRACT_STATIC         = YES
 GENERATE_TODOLIST      = YES
 SORT_MEMBER_DOCS       = YES
 JAVADOC_AUTOBRIEF      = YES
+NUM_PROC_THREADS       = 0
 
 # ── Output formats ───────────────────────────────────────────────────────────
 GENERATE_HTML          = YES
 GENERATE_LATEX         = NO
-GENERATE_XML           = YES
-XML_OUTPUT             = xml
+GENERATE_XML           = NO
+
+# ── HTML appearance ──────────────────────────────────────────────────────────
+HTML_OUTPUT            = build
+HTML_COLORSTYLE        = TOGGLE
+
+# ── Sidebar & navigation ─────────────────────────────────────────────────────
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+FULL_SIDEBAR           = NO
+TREEVIEW_WIDTH         = 335
+
+# ── Search ───────────────────────────────────────────────────────────────────
+SEARCHENGINE           = YES
+SERVER_BASED_SEARCH    = NO
 
 # ── Source browser ───────────────────────────────────────────────────────────
 SOURCE_BROWSER         = YES
 INLINE_SOURCES         = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+# ── Graphs (requires graphviz / dot) ─────────────────────────────────────────
+HAVE_DOT               = YES
+DOT_NUM_THREADS        = 0
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+GRAPHICAL_HIERARCHY    = YES
+INTERACTIVE_SVG        = YES
+DOT_IMAGE_FORMAT       = svg
+DOT_GRAPH_MAX_NODES    = 50
 
 # ── Warnings ─────────────────────────────────────────────────────────────────
 WARN_IF_UNDOCUMENTED   = YES

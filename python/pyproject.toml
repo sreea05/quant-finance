@@ -14,7 +14,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "breathe==4.36.0",
     "clang-format==22.1.1",
     "cmake==4.2.3",
     "gcovr==8.6",
