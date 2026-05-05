@@ -1,7 +1,8 @@
 {
   "dependencies": [
+    "boost-math",
     "eigen3",
     "gtest",
-    "boost-math"
+    "spdlog"
   ]
 }
