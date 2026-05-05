@@ -16,6 +16,7 @@ pybind11_add_module(
     main.cpp
     src/root.cpp
     src/example.cpp
+    src/logger.cpp
 )
 target_include_directories(_core PRIVATE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
